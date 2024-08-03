@@ -82,26 +82,31 @@ def caja_bigotes(grupo):
          if i <= BI:
               Valores_BI.append(i)
 
-    print(f"Los valores atípicos de la que son menores o iguales a la barrera inferior son {Valores_BI} y los atípicos mayores o iguales a la barrera superior son: {Valores_BS}")
-
-    print(f"La varianza es: {calculo_varianza} y la desviación estándar es: {desviancion_estandar}")
-
     calculo_varianza = np.var(grupo)
     desviancion_estandar = np.sqrt(calculo_varianza)
 
     print(f"La varianza es: {calculo_varianza} y la desviación estándar es: {desviancion_estandar}")
 
+    #Coeficiente de variación: 
+
+    Vp =  (desviancion_estandar / media) * 100
+
+    print(f"El coeficiente de variacion es {Vp}")
+
     #Asimetria
     As = round((Q1 + Q3 - ( 2 * Q2))/Q3-Q1,2)
 
     if As < 0:
-         print(f"El valor de la asimetría es: {As}, y es una asimetría es negativa")
+         print(f"El valor de la asimetría basada en cuantiles es: {As}, y es una asimetría es negativa")
     elif As > 0:
-        print(f"El valor de la asimetría es: {As}, y es una asimetría es positiva")
+        print(f"El valor de la asimetría basada en cuantiles es: {As}, y es una asimetría es positiva")
     else:
-         print(f"Es simétrico {As}")
+         print(f"El coeficiente de asimetria basada en cuantiles es simétrico {As}")
 
+    #Asimetria de pearson
 
+    Ap = (media - moda)/desviancion_estandar
+    print(f"El coeficiente de asimetría de pearson es {Ap}")
 
 #caja_bigotes(grupo)
 caja_bigotes(paises)
