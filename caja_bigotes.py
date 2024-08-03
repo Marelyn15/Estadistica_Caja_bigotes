@@ -1,4 +1,6 @@
 import statistics as st
+import math 
+import numpy as np
 
 #grupo = [90,94,53,68,79,84,87,72,70,69,65,89,85,83,72]
 grupo = [283.6,269.4,262.2,261.1,246.7,245.5,239.2,233.7,230.3,227.9,226.4,225.5,224.1,223.6,222.3,221.4,217.8,217.2,216.9,211.6,211.4,208.5,204.9,202.7,202,200.5,198.5,182.4,111]
@@ -81,6 +83,13 @@ def caja_bigotes(grupo):
               Valores_BI.append(i)
 
     print(f"Los valores atípicos de la que son menores o iguales a la barrera inferior son {Valores_BI} y los atípicos mayores o iguales a la barrera superior son: {Valores_BS}")
+
+    print(f"La varianza es: {calculo_varianza} y la desviación estándar es: {desviancion_estandar}")
+
+    calculo_varianza = np.var(grupo)
+    desviancion_estandar = np.sqrt(calculo_varianza)
+
+    print(f"La varianza es: {calculo_varianza} y la desviación estándar es: {desviancion_estandar}")
 
     #Asimetria
     As = round((Q1 + Q3 - ( 2 * Q2))/Q3-Q1,2)
